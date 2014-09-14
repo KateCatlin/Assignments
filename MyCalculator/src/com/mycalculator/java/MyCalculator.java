@@ -10,15 +10,13 @@ import  java.util.Scanner;
 
 public class MyCalculator {
 
+    public static int yourChoice;
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
 
         boolean KeepGoing = true;
-        int i;
-        int yourChoice = 0;
-        int yourChoice2;
 
         while (KeepGoing) {
             System.out.println("Entered the while loop");
@@ -26,8 +24,8 @@ public class MyCalculator {
 
             System.out.println("Still in the loop");
 
-            yourChoice2 = yourChoice+1;
-            System.out.println(yourChoice2);
+            System.out.println(yourChoice+1);
+
             KeepGoing = false;
 
         }
@@ -35,9 +33,8 @@ public class MyCalculator {
     }
 
 
-    public int methodPrintOpening() {
+    public static int methodPrintOpening() {
         Scanner in = new Scanner(System.in);
-        int yourChoice;
 
         System.out.println("What kind of function would you like to perform? \n Press ONLY the number:");
         System.out.println("'1' for addition");
