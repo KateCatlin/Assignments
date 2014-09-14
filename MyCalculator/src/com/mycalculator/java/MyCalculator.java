@@ -22,9 +22,9 @@ public class MyCalculator {
 
 
         while (keepGoing) {
-            System.out.println("Entered the while loop");
-            MyCalculator.getYourChoice();
-            System.out.println("yourChoice before cases is: " +yourChoice);
+            //System.out.println("Entered the while loop");
+            yourChoice = MyCalculator.getYourChoice();
+            //System.out.println("yourChoice before cases is: " +yourChoice);
             switch (yourChoice) {
                 case 1:
                     System.out.println("You chose addition!");
@@ -84,10 +84,10 @@ public class MyCalculator {
 
 
         if (checkIfInteger(in)) {
-            System.out.println("it's an integer");
+            //System.out.println("it's an integer");
             yourChoice = in.nextInt();
             if (checkIfInRange(yourChoice)) {
-                System.out.println("... and it's in the range.");
+                //System.out.println("... and it's in the range.");
             } else {
                 System.out.println("Sorry that's not an option! Please select between 1 - 5.");
                 MyCalculator.getYourChoice();
@@ -97,7 +97,7 @@ public class MyCalculator {
             MyCalculator.getYourChoice();
         }
 
-        System.out.println("integer choice at end of getYourChoice() is:" + yourChoice);
+        //System.out.println("integer choice at end of getYourChoice() is:" + yourChoice);
 
         return yourChoice;
     }
@@ -138,7 +138,7 @@ public class MyCalculator {
 
     public static boolean checkIfInteger(Scanner input) {
         if (input.hasNextInt ()) {
-            System.out.println("Went through checkIfInteger.");
+            //System.out.println("Went through checkIfInteger.");
             return true;
         }
         else return false;
