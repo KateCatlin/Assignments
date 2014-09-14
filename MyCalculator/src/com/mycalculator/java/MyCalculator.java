@@ -5,5 +5,7 @@ package com.mycalculator.java;
  */
 public class MyCalculator {
 
-    
+    public static void main(String[] args) {
+        //oh hey
+    }
 }
