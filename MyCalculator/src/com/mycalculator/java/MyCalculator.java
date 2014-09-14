@@ -24,6 +24,7 @@ public class MyCalculator {
         while (keepGoing) {
             System.out.println("Entered the while loop");
             MyCalculator.getYourChoice();
+            System.out.println("yourChoice before cases is: " +yourChoice);
             switch (yourChoice) {
                 case 1:
                     System.out.println("You chose addition!");
@@ -65,14 +66,14 @@ public class MyCalculator {
                     break;
             }
 
-            MyCalculator.getKeepGoingQ();
+            MyCalculator.keepGoingQuestion();
         }
-        System.out.println("Thanks for using this calculator!");
-    }
+        System.out.println("\nThanks for using this calculator!");}
 
 
     public static int getYourChoice() {
         Scanner in = new Scanner(System.in);
+        int yourChoice=34829;
 
         System.out.println("What kind of function would you like to perform? \n Press ONLY the number:");
         System.out.println("'1' for addition");
@@ -81,21 +82,23 @@ public class MyCalculator {
         System.out.println("'4' for division");
         System.out.println("'5' to find a square root");
 
-        if (in.hasNextInt()) {
-            System.out.println("it's an int!");
-            yourChoice = in.nextInt();
-            if (yourChoice <= 5 && yourChoice >= 1) {
-                //System.out.println("You chose: " + yourChoice);
-            } else {
-                System.out.println("Sorry, that's not an option. Please choose a number between 1 and 5, and type only the number! \n");
 
+        if (checkIfInteger(in)) {
+            System.out.println("it's an integer");
+            yourChoice = in.nextInt();
+            if (checkIfInRange(yourChoice)) {
+                System.out.println("... and it's in the range.");
+            } else {
+                System.out.println("Sorry that's not an option! Please select between 1 - 5.");
                 MyCalculator.getYourChoice();
             }
         } else {
-            System.out.println("Sorry, that's not an option. Please choose a number between 1 and 5, and type only the number! \n");
-
+            System.out.println("Sorry that's not an option! You must press a number between 1 -5.");
             MyCalculator.getYourChoice();
         }
+
+        System.out.println("integer choice at end of getYourChoice() is:" + yourChoice);
+
         return yourChoice;
     }
 
@@ -116,12 +119,38 @@ public class MyCalculator {
         return Math.sqrt(num1);
     }
 
-    public static int getKeepGoingQ() {
-        System.out.println("Would you like to ask another question?");
-        System.out.println("TO QUIT, press 1. otherwise press any other number.");
+    public static int keepGoingQuestion() {
+        System.out.println("\nWould you like to ask another question?\n");
+        System.out.println("TO QUIT, press 1. otherwise press any other number.\n");
         Scanner in = new Scanner(System.in);
-        int keepGoingQ = in.nextInt();
-        if (keepGoingQ == 1) keepGoing = false;
+        if (checkIfInteger(in)) {
+            int keepGoingQ = in.nextInt();
+            if (keepGoingQ == 1) keepGoing = false;
+        return 0;}
+        else {
+            System.out.println("Sorry, you have to enter a number for me to understand! \n");
+            MyCalculator.keepGoingQuestion();
+
+        }
         return 0;
     }
+
+
+    public static boolean checkIfInteger(Scanner input) {
+        if (input.hasNextInt ()) {
+            System.out.println("Went through checkIfInteger.");
+            return true;
+        }
+        else return false;
+    }
+
+    public static boolean checkIfInRange(int yourChoice) {
+        //System.out.println("Went to checkIfInRange.");
+        if (yourChoice<=5 && yourChoice>=1) {
+            //System.out.println("Passed checkIfInteger.");
+            return true;
+        }
+        else return false;
+    }
+
 }
